@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -61,12 +63,15 @@ public class AdapterRecent extends Adapter<ViewHolder> {
         LikeButton likeButton;
         LottieAnimationView progressBar;
 
+        LinearLayout point;
+
         OriginalViewHolder(View view) {
             super(view);
             this.imageView = view.findViewById(R.id.image);
             this.progressBar = view.findViewById(R.id.progressBar);
             this.likeButton = view.findViewById(R.id.likeButton);
             this.card_gif = view.findViewById(R.id.card_gif);
+            this.point = view.findViewById(R.id.pointView);
         }
     }
 
@@ -90,6 +95,13 @@ public class AdapterRecent extends Adapter<ViewHolder> {
             holder.card_gif.setVisibility(View.GONE);
             if (Helpers.getExt(modelWallpaperAll.wallpaper_image).equals("gif")) {
                 holder.card_gif.setVisibility(View.VISIBLE);
+            }
+            Log.d("thuchs", modelWallpaperAll.wallpaper_folder);
+            if (modelWallpaperAll.wallpaper_folder.equals("wallpaper/Cars")) {
+                holder.point.setVisibility(View.VISIBLE);
+            }
+            else {
+                holder.point.setVisibility(View.GONE);
             }
             RequestManager with = Glide.with(this.context);
             String sb = Variable.assets_folder + modelWallpaperAll.wallpaper_image;
@@ -115,12 +127,14 @@ public class AdapterRecent extends Adapter<ViewHolder> {
             });
             holder.itemView.setOnClickListener(new OnClickListener() {
                 public void onClick(View view) {
-                    if (App.getInstance().getValueCoin() >= 2) {
-                        App.getInstance().setValueCoin(App.getInstance().getValueCoin() - 2);
-                    }
-                    else {
-                        Toast.makeText(context, "You need more coin to using this image!", Toast.LENGTH_LONG).show();
-                        return ;
+                    if (modelWallpaperAll.wallpaper_folder.equals("wallpaper/Cars")) {
+                        if (App.getInstance().getValueCoin() >= 2) {
+                            App.getInstance().setValueCoin(App.getInstance().getValueCoin() - 2);
+                        }
+                        else {
+                            Toast.makeText(context, "You need more coin to using this image!", Toast.LENGTH_LONG).show();
+                            return ;
+                        }
                     }
                     Variable.arrayListDetail.clear();
                     Variable.arrayListDetail.addAll(AdapterRecent.this.arrayList);
