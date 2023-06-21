@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                                   android:layout_height="wrap_content"
+                                                   xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.gms.ads.formats.UnifiedNativeAdView android:id="@id/native_ad_view"
+                                                            android:layout_width="fill_parent"
+                                                            android:layout_height="wrap_content"
+                                                            app:layout_constraintStart_toStartOf="parent"
+                                                            app:layout_constraintBottom_toBottomOf="parent"
+                                                            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical"
+                                                           android:layout_width="fill_parent"
+                                                           android:layout_height="wrap_content">
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/ad_attribution"
+                      android:background="#ffffcc66" android:padding="3.0dip" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:text="@string/title_ad_banner"
+                      app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent"
+                                                               android:layout_height="wrap_content"
+                                                               android:layout_margin="20.0dip"
+                                                               app:layout_constraintBottom_toBottomOf="parent"
+                                                               app:layout_constraintStart_toStartOf="parent"
+                                                               app:layout_constraintTop_toBottomOf="@id/ad_attribution">
+                <androidx.cardview.widget.CardView android:id="@+id/cardImage" android:layout_width="56.0dip"
+                                                   android:layout_height="56.0dip" android:layout_margin="5.0dip"
+                                                   app:cardCornerRadius="5.0dip" app:cardElevation="5.0dip"
+                                                   app:layout_constraintStart_toStartOf="parent"
+                                                   app:layout_constraintTop_toTopOf="parent">
+                    <ImageView android:id="@id/icon" android:layout_width="56.0dip" android:layout_height="56.0dip"
+                               android:contentDescription="@string/app_name"/>
+                </androidx.cardview.widget.CardView>
+                <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/colorBackground"
+                          android:id="@id/primary" android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" android:maxLines="1"
+                          android:fontFamily="@font/open_sans_light" android:layout_marginStart="10.0dip"
+                          app:layout_constraintStart_toEndOf="@id/cardImage" app:layout_constraintTop_toTopOf="parent"/>
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar android:layout_gravity="bottom"
+                                                                         android:id="@id/rating_bar"
+                                                                         android:layout_width="wrap_content"
+                                                                         android:layout_height="wrap_content"
+                                                                         android:rating="2.5" android:stepSize="0.01"
+                                                                         android:layout_marginStart="10.0dip"
+                                                                         app:layout_constraintStart_toEndOf="@id/cardImage"
+                                                                         app:layout_constraintTop_toBottomOf="@id/primary"
+                                                                         app:mrb_progressTint="@android:color/white"
+                                                                         app:mrb_secondaryProgressTint="@color/colorTextSecondary"
+                                                                         style="@style/Widget.MaterialRatingBar.RatingBar.Small"/>
+                <TextView android:textSize="14.0sp" android:textStyle="bold"
+                          android:textColor="@color/colorTextSecondary" android:gravity="bottom"
+                          android:layout_gravity="bottom" android:id="@id/secondary" android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" android:fontFamily="@font/open_sans_light"
+                          android:layout_marginStart="10.0dip" app:layout_constraintStart_toEndOf="@id/cardImage"
+                          app:layout_constraintTop_toBottomOf="@id/rating_bar"/>
+                <TextView android:textSize="14.0sp" android:textColor="@color/colorTextSecondary" android:id="@id/body"
+                          android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:layout_marginTop="10.0dip" android:fontFamily="@font/open_sans_light"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintTop_toBottomOf="@id/cardImage"/>
+                <com.google.android.gms.ads.formats.MediaView android:id="@id/media_view"
+                                                              android:layout_width="fill_parent"
+                                                              android:layout_height="200.0dip"
+                                                              app:layout_constraintStart_toStartOf="parent"
+                                                              app:layout_constraintTop_toBottomOf="@id/body"/>
+                <Button android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/colorTextSecondary"
+                        android:id="@id/cta" android:background="@android:color/white"
+                        android:layout_width="fill_parent" android:layout_height="30.0dip"
+                        android:fontFamily="@font/open_sans_light" android:backgroundTint="@android:color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/media_view"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.gms.ads.formats.UnifiedNativeAdView>
+</androidx.constraintlayout.widget.ConstraintLayout>

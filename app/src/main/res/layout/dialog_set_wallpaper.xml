@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                                   android:layout_height="wrap_content"
+                                                   xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.github.florent37.shapeofview.shapes.RoundRectView android:layout_width="fill_parent"
+                                                           android:layout_height="wrap_content"
+                                                           app:layout_constraintStart_toStartOf="parent"
+                                                           app:layout_constraintBottom_toBottomOf="parent"
+                                                           app:layout_constraintTop_toTopOf="parent"
+                                                           app:shape_roundRect_topLeftRadius="20.0dip"
+                                                           app:shape_roundRect_topRightRadius="20.0dip">
+        <androidx.constraintlayout.widget.ConstraintLayout android:background="@color/colorBackground"
+                                                           android:paddingTop="10.0dip" android:paddingBottom="10.0dip"
+                                                           android:layout_width="fill_parent"
+                                                           android:layout_height="wrap_content">
+            <TextView android:textSize="18.0sp" android:textColor="@android:color/white"
+                      android:id="@+id/textHomeScreen"
+                      android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="@string/title_home_screen" app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            <View android:id="@+id/divider1" android:background="@android:color/white"
+                  android:layout_width="fill_parent"
+                  android:layout_height="0.100000024dip" android:layout_marginTop="10.0dip"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/textHomeScreen"/>
+            <TextView android:textSize="18.0sp" android:textColor="@android:color/white"
+                      android:id="@+id/textHomeLockScreen" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/title_lock_screen"
+                      app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@id/divider1"/>
+            <View android:id="@id/divider2" android:background="@android:color/white" android:layout_width="fill_parent"
+                  android:layout_height="0.100000024dip" android:layout_marginTop="10.0dip"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/textHomeLockScreen"/>
+            <TextView android:textSize="18.0sp" android:textColor="@android:color/white"
+                      android:id="@+id/textHomeScreenAndLockScreen" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_marginTop="10.0dip"
+                      android:text="@string/title_both_screen" app:layout_constraintEnd_toEndOf="parent"
+                      app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/divider2"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
+</androidx.constraintlayout.widget.ConstraintLayout>

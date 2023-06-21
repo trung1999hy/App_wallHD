@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HD Wallpaper</string>
+    <string name="about_me">HD Wallpaper is number one wallpaper in the world, you can download wallpaper easily on this app. HD Wallpaper Offline created by CODERTUBE @2020</string>
+    <string name="download_folder">hdwallpaper</string>
+    <string name="drawer_about">About Me</string>
+    <string name="drawer_category">Categories</string>
+    <string name="drawer_developer">HD Wallpaper</string>
+    <string name="drawer_email"></string>
+    <string name="drawer_favourite">Favourite</string>
+    <string name="drawer_home">Home</string>
+    <string name="drawer_more">More App</string>
+    <string name="drawer_privacy">Privacy Police</string>
+    <string name="drawer_rate">Rate App</string>
+    <string name="drawer_share">Share App</string>
+    <string name="get_more_wall">Get more amazing wallpapers, download now</string>
+    <string name="wallpaper_saved">Wallpaper save to HD Wallpaper Offline</string>
+    <string name="wallpaper_saved_error">Wallpaper download error, please try again later</string>
+    <string name="wallpaper_set_error">Wallpaper engine error, please try again later</string>
+    <string name="wallpaper_set_success">Wallpaper set successfully</string>
+    <string name="toolbar_text_unicode">֍</string>
+    <string name="toolbar_title">HDWallpaper</string>
+    <string name="play_developer_id">1234567891234567891</string>
+    <string name="privacy_police">http://google.com/privacy</string>
+    <string name="title_about_me">ABOUT ME</string>
+    <string name="dummy_title">codertube</string>
+    <string name="title_home_screen">HOME SCREEN</string>
+    <string name="title_lock_screen">LOCK SCREEN</string>
+    <string name="title_both_screen">HOME SCREEN &amp; LOCK SCREEN</string>
+    <string name="title_communicate">Communicate</string>
+    <string name="title_developer">Developer</string>
+    <string name="title_ad_banner">Ad</string>
+    <string name="title_gif">GIF</string>
+
+    <string name="message_purchase_one">Choose color %s</string>
+    <string name="choice_type">Choose type</string>
+    <string name="need_coin">You need more coin to start.</string>
+    <string name="information">Information</string>
+    <string name="information_detail">You must 2 point to using this image!</string>
+</resources>

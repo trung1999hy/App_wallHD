@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="badge_left_margin">5.0dip</dimen>
+    <dimen name="browser_actions_context_menu_max_width">500.0dip</dimen>
+    <dimen name="browser_actions_context_menu_min_padding">20.0dip</dimen>
+    <dimen name="centre_content_width">110.0dip</dimen>
+    <dimen name="gnt_ad_indicator_bar_height">30.0dip</dimen>
+    <dimen name="gnt_ad_indicator_bottom_margin">10.0dip</dimen>
+    <dimen name="gnt_ad_indicator_height">20.0dip</dimen>
+    <dimen name="gnt_ad_indicator_text_size">10.0sp</dimen>
+    <dimen name="gnt_ad_indicator_top_margin">0.0dip</dimen>
+    <dimen name="gnt_ad_indicator_width">25.0dip</dimen>
+    <dimen name="gnt_default_margin">10.0dip</dimen>
+    <item type="dimen" name="gnt_media_view_weight">1.0</item>
+    <dimen name="gnt_medium_cta_button_height">50.0dip</dimen>
+    <item type="dimen" name="gnt_medium_template_bottom_weight">0.4</item>
+    <item type="dimen" name="gnt_medium_template_top_weight">0.2</item>
+    <dimen name="gnt_no_margin">0.0dip</dimen>
+    <dimen name="gnt_no_size">0.0dip</dimen>
+    <dimen name="gnt_small_cta_button_height">30.0dip</dimen>
+    <item type="dimen" name="gnt_text_row_weight">0.25</item>
+    <dimen name="gnt_text_size_large">15.0sp</dimen>
+    <dimen name="gnt_text_size_small">12.0sp</dimen>
+    <dimen name="main_content_height">50.0dip</dimen>
+    <dimen name="margin_10">10.0dip</dimen>
+    <dimen name="margin_20">20.0dip</dimen>
+    <dimen name="margin_30">30.0dip</dimen>
+    <dimen name="margin_40">40.0dip</dimen>
+    <dimen name="margin_5">5.0dip</dimen>
+    <item type="dimen" name="material_emphasis_disabled">0.38</item>
+    <item type="dimen" name="material_emphasis_high_type">0.87</item>
+    <item type="dimen" name="material_emphasis_medium">0.6</item>
+    <dimen name="space_centre_button_default_size">56.0dip</dimen>
+    <dimen name="space_centre_button_margin">6.0dip</dimen>
+    <dimen name="space_item_icon_default_size">18.0dip</dimen>
+    <dimen name="space_item_icon_only_size">25.0dip</dimen>
+    <dimen name="space_item_text_default_size">14.0sp</dimen>
+    <dimen name="space_navigation_height">72.0dip</dimen>
+    <dimen name="subtitle_corner_radius">2.0dip</dimen>
+    <dimen name="subtitle_outline_width">2.0dip</dimen>
+    <dimen name="subtitle_shadow_offset">2.0dip</dimen>
+    <dimen name="subtitle_shadow_radius">2.0dip</dimen>
+    <dimen name="text_20">20.0sp</dimen>
+    <dimen name="view_bottom_margin">50.0dip</dimen>
+</resources>
