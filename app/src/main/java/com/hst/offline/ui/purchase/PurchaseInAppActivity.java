@@ -134,6 +134,11 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
                         .setProductId(IConstaint.KEY_1_COIN)
                         .setProductType(INAPP)
                         .build(),
+                QueryProductDetailsParams.Product.newBuilder()
+                        .setProductId(IConstaint.KEY_COIN)
+                        .setProductType(INAPP)
+                        .build(),
+
 
                 //Product 2
                 QueryProductDetailsParams.Product.newBuilder()
@@ -247,6 +252,8 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
 
     private int getCoinFromKey(String coin) {
         switch (coin) {
+            case IConstaint.KEY_COIN:
+                return 25;
             case IConstaint.KEY_1_COIN:
                 return 50;
             case IConstaint.KEY_2_COIN:

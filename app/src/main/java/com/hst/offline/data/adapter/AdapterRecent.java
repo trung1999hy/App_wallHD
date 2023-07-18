@@ -96,7 +96,6 @@ public class AdapterRecent extends Adapter<ViewHolder> {
             if (Helpers.getExt(modelWallpaperAll.wallpaper_image).equals("gif")) {
                 holder.card_gif.setVisibility(View.VISIBLE);
             }
-            Log.d("thuchs", modelWallpaperAll.wallpaper_folder);
             if (modelWallpaperAll.wallpaper_folder.equals("wallpaper/Cars")) {
                 holder.point.setVisibility(View.VISIBLE);
             }

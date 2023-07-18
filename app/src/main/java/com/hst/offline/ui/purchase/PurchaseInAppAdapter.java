@@ -80,20 +80,22 @@ public class PurchaseInAppAdapter extends RecyclerView.Adapter<PurchaseInAppAdap
 
     private String setTitleValue(String productId, String price) {
         switch (productId) {
+            case IConstaint.KEY_COIN:
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/25 vàng");
             case IConstaint.KEY_1_COIN:
-                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/5 vàng");
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/50 vàng");
             case IConstaint.KEY_2_COIN:
-                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/10 vàng");
-            case IConstaint.KEY_3_COIN:
-                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/20 vàng");
-            case IConstaint.KEY_4_COIN:
-                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/30 vàng");
-            case IConstaint.KEY_5_COIN:
                 return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/100 vàng");
+            case IConstaint.KEY_3_COIN:
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/200 vàng");
+            case IConstaint.KEY_4_COIN:
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/400 vàng");
+            case IConstaint.KEY_5_COIN:
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/600 vàng");
             case IConstaint.KEY_6_COIN:
-                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/150 vàng");
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/700 vàng");
             case IConstaint.KEY_7_COIN:
-                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/7 vàng");
+                return String.format(context.getResources().getString(R.string.message_purchase_one), price + "/99 vàng");
             default:
                 return String.format(context.getResources().getString(R.string.message_purchase_one), "/0 vàng");
         }

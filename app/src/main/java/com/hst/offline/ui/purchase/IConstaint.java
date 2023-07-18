@@ -2,6 +2,7 @@ package com.hst.offline.ui.purchase;
 
 public interface IConstaint {
     public static final String KEY_1_COIN = "key_in_app_8"; // 50 coin
+    public static final String KEY_COIN = "key_in_app_2000"; // 25 coin
     public static final String KEY_2_COIN = "key_in_app_9"; // 100 coin
     public static final String KEY_3_COIN = "key_in_app_10"; // 200 coin
     public static final String KEY_4_COIN = "key_in_app_11"; // 400 coin
