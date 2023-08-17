@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HD Wallpaper</string>
-    <string name="about_me">HD Wallpaper is number one wallpaper in the world, you can download wallpaper easily on this app. HD Wallpaper Offline created by CODERTUBE @2020</string>
-    <string name="download_folder">hdwallpaper</string>
+    <string name="app_name"> Wallpaper HD</string>
+    <string name="about_me"> Wallpaper HD is number one wallpaper in the world, you can download wallpaper easily on this app. HD Wallpaper Offline created by CODERTUBE @2020</string>
+    <string name="download_folder">wallpaper hd</string>
     <string name="drawer_about">About Me</string>
     <string name="drawer_category">Categories</string>
-    <string name="drawer_developer">HD Wallpaper</string>
+    <string name="drawer_developer"> Wallpaper HD </string>
     <string name="drawer_email"></string>
     <string name="drawer_favourite">Favourite</string>
     <string name="drawer_home">Home</string>
-    <string name="drawer_more">More App</string>
-    <string name="drawer_privacy">Privacy Police</string>
-    <string name="drawer_rate">Rate App</string>
-    <string name="drawer_share">Share App</string>
+
     <string name="get_more_wall">Get more amazing wallpapers, download now</string>
-    <string name="wallpaper_saved">Wallpaper save to HD Wallpaper Offline</string>
-    <string name="wallpaper_saved_error">Wallpaper download error, please try again later</string>
-    <string name="wallpaper_set_error">Wallpaper engine error, please try again later</string>
+    <string name="wallpaper_saved">Wallpaper save to  Wallpaper HD Offline</string>
+    <string name="wallpaper_saved_error">Wallpaper HD download error, please try again later</string>
+    <string name="wallpaper_set_error">Wallpaper HD engine error, please try again later</string>
     <string name="wallpaper_set_success">Wallpaper set successfully</string>
-    <string name="toolbar_text_unicode">֍</string>
-    <string name="toolbar_title">HDWallpaper</string>
+    <string name="toolbar_title">Wallpaper HD</string>
     <string name="play_developer_id">1234567891234567891</string>
     <string name="privacy_police">http://google.com/privacy</string>
     <string name="title_about_me">ABOUT ME</string>

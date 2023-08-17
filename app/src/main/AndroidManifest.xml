@@ -1,51 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-          package="com.hst.offline">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hst.hdwallpaper">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
-    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS"/>
-    <uses-feature android:name="android.software.live_wallpaper" android:required="true"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <application android:theme="@style/AppTheme"
-        android:label="@string/app_name"
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
+
+    <uses-feature
+        android:name="android.software.live_wallpaper"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name="com.hst.hdwallpaper.App"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_logo_foreground"
-                 android:name=".App" android:allowBackup="true"
-                 android:supportsRtl="true" android:roundIcon="@mipmap/ic_logo_round"
-                 android:requestLegacyExternalStorage="true">
-        <activity android:name=".ui.splash.SplashActivity"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.hst.hdwallpaper.ui.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.zoom.ZoomActivity"/>
-        <activity android:name=".ui.detail.DetailActivity"/>
-        <activity android:name=".ui.listcategory.ListCategoryActivity"/>
-        <activity android:name=".ui.main.MainActivity"/>
-        <activity android:name=".ui.purchase.PurchaseInAppActivity"/>
-        <activity android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                  android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="fullSensor"/>
-        <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true"/>
-        <service android:label="HD GIF WALLPAPER"
-                 android:name=".data.services.GifWallpaperService"
-                 android:permission="android.permission.BIND_WALLPAPER" android:showOnLockScreen="true"
-            android:exported="true">
+        <activity android:name="com.hst.hdwallpaper.ui.zoom_in.ZoomInActivity" />
+        <activity android:name="com.hst.hdwallpaper.ui.view.ViewActivity" />
+        <activity android:name="com.hst.hdwallpaper.ui.category_list.CategoryListActivity" />
+        <activity android:name="com.hst.hdwallpaper.ui.main.MainActivity" />
+        <activity android:name="com.hst.hdwallpaper.ui.purchase.PurchaseInAppActivity" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+        <service
+            android:name="com.hst.hdwallpaper.data.services.GifWallpaperService"
+            android:exported="true"
+            android:label="HD GIF WALLPAPER"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:showOnLockScreen="true">
             <intent-filter>
-                <action android:name="android.service.wallpaper.WallpaperService"/>
+                <action android:name="android.service.wallpaper.WallpaperService" />
             </intent-filter>
-            <meta-data android:name="android.service.wallpaper" android:resource="@xml/wallpaper"/>
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
         </service>
-        <activity android:theme="@style/Theme.Transparent.Permission"
-                  tools:replace="android:configChanges"
-                  android:name="com.gun0912.tedpermission.TedPermissionActivity" android:screenOrientation="unspecified"
-                  android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|layoutDirection|fontScale"/>
-        <provider android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer" android:exported="false"
-                  android:multiprocess="true" android:authorities="com.hst.offline.lifecycle-process"/>
+        <activity
+            android:name="com.gun0912.tedpermission.TedPermissionActivity"
+            android:configChanges="mcc|mnc|locale|keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|layoutDirection|fontScale"
+            android:screenOrientation="unspecified"
+            android:theme="@style/Theme.Transparent.Permission"
+            tools:replace="android:configChanges" />
+
     </application>
 </manifest>

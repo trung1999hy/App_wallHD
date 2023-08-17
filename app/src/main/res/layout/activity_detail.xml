@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout android:tag="layout/activity_detail_0"
-                                                   android:background="@color/colorBackground"
-                                                   android:layout_width="fill_parent"
-                                                   android:layout_height="fill_parent"
-                                                   xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.viewpager.widget.ViewPager android:id="@+id/enchantedViewPager" android:layout_width="fill_parent"
-                                         android:layout_height="wrap_content"
-                                         app:layout_constraintBottom_toBottomOf="parent"
-                                         app:layout_constraintStart_toStartOf="parent"
-                                         app:layout_constraintTop_toTopOf="parent"/>
-    <ImageView android:id="@+id/imageBack" android:background="@drawable/ic_detail_back"
-               android:layout_width="wrap_content" android:layout_height="wrap_content"
-               android:layout_marginTop="@dimen/margin_20" android:contentDescription="@string/app_name"
-               android:layout_marginStart="@dimen/margin_20" app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent"/>
-    <com.fangxu.allangleexpandablebutton.AllAngleExpandableButton android:id="@+id/button_expandable"
-                                                                  android:layout_width="wrap_content"
-                                                                  android:layout_height="wrap_content"
-                                                                  android:layout_marginBottom="20.0dip"
-                                                                  app:aebAnimDurationMillis="175"
-                                                                  app:aebBlurBackground="true" app:aebBlurRadius="10.0"
-                                                                  app:aebButtonElevation="4.0dip"
-                                                                  app:aebButtonGapDp="45.0dip"
-                                                                  app:aebEndAngleDegree="150"
-                                                                  app:aebIsSelectionMode="false"
-                                                                  app:aebMainButtonRotateAnimDurationMillis="300"
-                                                                  app:aebMainButtonRotateDegree="0"
-                                                                  app:aebMainButtonSizeDp="45.0dip"
-                                                                  app:aebRippleEffect="true"
-                                                                  app:aebStartAngleDegree="30"
-                                                                  app:aebSubButtonSizeDp="45.0dip"
-                                                                  app:layout_constraintBottom_toBottomOf="parent"
-                                                                  app:layout_constraintEnd_toEndOf="parent"
-                                                                  app:layout_constraintStart_toStartOf="parent"/>
+    android:background="@color/colorBackground"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/enchantedViewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageBack"
+        android:background="@drawable/ic_detail_back"
+        android:layout_width="40dp"
+        android:layout_height="@dimen/margin_40"
+        android:layout_marginTop="@dimen/margin_20"
+        android:contentDescription="@string/app_name"
+        android:layout_marginStart="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.fangxu.allangleexpandablebutton.AllAngleExpandableButton
+        android:id="@+id/button_expandable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20.0dip"
+        app:aebAnimDurationMillis="175"
+        app:aebBlurBackground="true"
+        app:aebBlurRadius="10.0"
+        app:aebButtonElevation="4.0dip"
+        app:aebButtonGapDp="45.0dip"
+        app:aebEndAngleDegree="150"
+        app:aebIsSelectionMode="false"
+        app:aebMainButtonRotateAnimDurationMillis="300"
+        app:aebMainButtonRotateDegree="0"
+        app:aebMainButtonSizeDp="45.0dip"
+        app:aebRippleEffect="true"
+        app:aebStartAngleDegree="30"
+        app:aebSubButtonSizeDp="45.0dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
