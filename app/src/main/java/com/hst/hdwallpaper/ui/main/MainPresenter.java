@@ -44,7 +44,11 @@ public class MainPresenter extends BasePresenter<MainView> {
             }
 
             public void onItemClick(int itemIndex, String itemName) {
-                MainPresenter.this.getMvpView().onItemClick(itemIndex, itemName);
+                try {
+                    MainPresenter.this.getMvpView().onItemClick(itemIndex, itemName);
+                }catch (Throwable throwable){
+//
+                }
             }
 
             public void onItemReselected(int itemIndex, String itemName) {

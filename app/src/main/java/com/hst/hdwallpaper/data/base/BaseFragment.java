@@ -66,6 +66,7 @@ public abstract class BaseFragment<V extends MvpView, P extends BasePresenter<V>
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        try {
         BaseViewModel<V, P> viewModel = new ViewModelProvider(this).get(BaseViewModel.class);
         boolean isPresenterCreated = false;
         if (viewModel.getPresenter() == null) {
@@ -79,6 +80,9 @@ public abstract class BaseFragment<V extends MvpView, P extends BasePresenter<V>
             this.presenter.onPresenterCreated();
         }
         onStarting();
+        }catch (Throwable throwable){
+
+        }
     }
 
     public View getRootView() {
