@@ -24,16 +24,19 @@ public class FavouritePresenter extends BasePresenter<FavouriteView> {
     private RecyclerView recyclerView;
     private AdapterRecent adapterRecent;
 
-
     public void initView(Activity context2, View rootView) {
-        this.context = context2;
-        DatabaseFavourite DatabaseFavourite = new DatabaseFavourite(context2);
-        this.progress = new Progress(context2);
-        this.recyclerView = rootView.findViewById(R.id.recyclerView);
-        this.recyclerView.setVisibility(View.GONE);
-        this.progress.show();
-        this.arrayListAll = DatabaseFavourite.getAllData();
-        initData();
+        try {
+            this.context = context2;
+            DatabaseFavourite DatabaseFavourite = new DatabaseFavourite(context2);
+            this.progress = new Progress(context2);
+            this.recyclerView = rootView.findViewById(R.id.recyclerView);
+            this.recyclerView.setVisibility(View.GONE);
+            this.progress.show();
+            this.arrayListAll = DatabaseFavourite.getAllData();
+            initData();
+        } catch (Throwable throwable) {
+
+        }
     }
 
     private void initData() {
