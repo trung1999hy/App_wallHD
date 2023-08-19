@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -87,60 +88,62 @@ public class AdapterRecent extends Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder_parent, @SuppressLint("RecyclerView") final int position) {
-        final WallpaperAllModel wallpaperAllModel = this.arrayList.get(position);
-        if (!wallpaperAllModel.wallpaper_image.equals("native")) {
-            final OriginalViewHolder holder = (OriginalViewHolder) holder_parent;
-            holder.card_gif.setVisibility(View.GONE);
-            if (IHelpers.getExt(wallpaperAllModel.wallpaper_image).equals("gif")) {
-                holder.card_gif.setVisibility(View.VISIBLE);
-            }
-            if (wallpaperAllModel.wallpaper_folder.equals("wallpaper/cars")) {
-                holder.point.setVisibility(View.VISIBLE);
-            }
-            else {
-                holder.point.setVisibility(View.GONE);
-            }
-            RequestManager with = Glide.with(this.context);
-            String sb = Value.assets_folder + wallpaperAllModel.wallpaper_image;
-            with.load(sb).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).thumbnail(0.25f).listener(new RequestListener<Drawable>() {
-                public boolean onLoadFailed(GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                    return false;
+        try {
+            final WallpaperAllModel wallpaperAllModel = this.arrayList.get(position);
+            if (!wallpaperAllModel.wallpaper_image.equals("native")) {
+                final OriginalViewHolder holder = (OriginalViewHolder) holder_parent;
+                holder.card_gif.setVisibility(View.GONE);
+                if (IHelpers.getExt(wallpaperAllModel.wallpaper_image).equals("gif")) {
+                    holder.card_gif.setVisibility(View.VISIBLE);
                 }
-
-                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                    holder.progressBar.setVisibility(View.GONE);
-                    return false;
+                if (wallpaperAllModel.wallpaper_folder.equals("wallpaper/cars")) {
+                    holder.point.setVisibility(View.VISIBLE);
+                } else {
+                    holder.point.setVisibility(View.GONE);
                 }
-            }).into(holder.imageView);
-            holder.likeButton.setLiked(this.DatabaseFavourite.isFavourite(wallpaperAllModel));
-            holder.likeButton.setOnLikeListener(new OnLikeListener() {
-                public void liked(LikeButton likeButton) {
-                    AdapterRecent.this.DatabaseFavourite.AddtoFavorite(wallpaperAllModel);
-                }
-
-                public void unLiked(LikeButton likeButton) {
-                    AdapterRecent.this.DatabaseFavourite.RemoveFav(wallpaperAllModel);
-                }
-            });
-            holder.itemView.setOnClickListener(new OnClickListener() {
-                public void onClick(View view) {
-                    if (wallpaperAllModel.wallpaper_folder.equals("wallpaper/cars")) {
-                        if (App.getInstance().getValueCoin() >= 2) {
-                            App.getInstance().setValueCoin(App.getInstance().getValueCoin() - 2);
-                        }
-                        else {
-                            Toast.makeText(context, "You need more coin to using this image!", Toast.LENGTH_LONG).show();
-                            return ;
-                        }
+                RequestManager with = Glide.with(this.context);
+                String sb = Value.assets_folder + wallpaperAllModel.wallpaper_image;
+                with.load(sb).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).thumbnail(0.25f).listener(new RequestListener<Drawable>() {
+                    public boolean onLoadFailed(GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        return false;
                     }
-                    Value.arrayListDetail.clear();
-                    Value.arrayListDetail.addAll(AdapterRecent.this.arrayList);
-                    Intent intent = new Intent(AdapterRecent.this.context, ViewActivity.class);
-                    intent.putExtra("position", position);
-                    AdapterRecent.this.context.startActivity(intent);
-                    AdapterRecent.this.context.overridePendingTransition(R.anim.slide_up, R.anim.no_change);
-                }
-            });
+
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        holder.progressBar.setVisibility(View.GONE);
+                        return false;
+                    }
+                }).into(holder.imageView);
+                holder.likeButton.setLiked(this.DatabaseFavourite.isFavourite(wallpaperAllModel));
+                holder.likeButton.setOnLikeListener(new OnLikeListener() {
+                    public void liked(LikeButton likeButton) {
+                        AdapterRecent.this.DatabaseFavourite.AddtoFavorite(wallpaperAllModel);
+                    }
+
+                    public void unLiked(LikeButton likeButton) {
+                        AdapterRecent.this.DatabaseFavourite.RemoveFav(wallpaperAllModel);
+                    }
+                });
+                holder.itemView.setOnClickListener(new OnClickListener() {
+                    public void onClick(View view) {
+                        if (wallpaperAllModel.wallpaper_folder.equals("wallpaper/cars")) {
+                            if (App.getInstance().getValueCoin() >= 2) {
+                                App.getInstance().setValueCoin(App.getInstance().getValueCoin() - 2);
+                            } else {
+                                Toast.makeText(context, "You need more coin to using this image!", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                        }
+                        Value.arrayListDetail.clear();
+                        Value.arrayListDetail.addAll(AdapterRecent.this.arrayList);
+                        Intent intent = new Intent(AdapterRecent.this.context, ViewActivity.class);
+                        intent.putExtra("position", position);
+                        AdapterRecent.this.context.startActivity(intent);
+                        AdapterRecent.this.context.overridePendingTransition(R.anim.slide_up, R.anim.no_change);
+                    }
+                });
+                return;
+            }
+        } catch (Throwable throwable) {
             return;
         }
     }

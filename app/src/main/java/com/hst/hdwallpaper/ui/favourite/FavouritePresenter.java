@@ -32,7 +32,7 @@ public class FavouritePresenter extends BasePresenter<FavouriteView> {
             this.recyclerView = rootView.findViewById(R.id.recyclerView);
             this.recyclerView.setVisibility(View.GONE);
             this.progress.show();
-            this.arrayListAll = DatabaseFavourite.getAllData();
+            this.arrayListAll = new ArrayList<>();
             initData();
         } catch (Throwable throwable) {
 
