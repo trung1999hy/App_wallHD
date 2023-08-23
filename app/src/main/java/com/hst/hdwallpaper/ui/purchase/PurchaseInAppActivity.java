@@ -8,7 +8,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,6 +46,7 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
     private OnPurchaseResponse onPurchaseResponse;
 
     private ImageView imvBack;
+    private LinearLayout layout;
     private RecyclerView listData;
 
     @Override
@@ -52,6 +55,7 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
         setContentView(R.layout.activity_purchase_in_app);
         imvBack = findViewById(R.id.imvBack);
         listData = findViewById(R.id.listData);
+        layout = findViewById(R.id.view);
         initViews();
         imvBack.setOnClickListener(v -> {
             onBackPressed();
@@ -110,8 +114,12 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
                     handler.postDelayed(() -> {
                         productDetailsList.addAll(prodDetailsList);
                         adapter.setData(this, productDetailsList);
-                        if (prodDetailsList.size() == 0)
+                        if (prodDetailsList.size() == 0) {
+                            layout.setVisibility(View.VISIBLE);
                             Toast.makeText(PurchaseInAppActivity.this, "prodDetailsList, size = 0", Toast.LENGTH_SHORT).show();
+                        } else {
+                            layout.setVisibility(View.GONE);
+                        }
                     }, 2000);
                 }
         );

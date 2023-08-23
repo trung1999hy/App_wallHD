@@ -1,5 +1,8 @@
 package com.hst.hdwallpaper.ui.view;
 
+import static android.content.ContentValues.TAG;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.WallpaperManager;
@@ -19,21 +22,26 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.os.StrictMode.VmPolicy.Builder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.PermissionChecker;
 import androidx.core.view.InputDeviceCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -52,6 +60,7 @@ import com.hst.hdwallpaper.ui.utils.*;
 import com.hst.hdwallpaper.ui.zoom_in.ZoomInActivity;
 import com.yalantis.ucrop.UCrop;
 import com.yalantis.ucrop.UCrop.Options;
+
 import de.mateware.snacky.Snacky;
 import flipagram.assetcopylib.AssetCopier;
 
@@ -275,12 +284,9 @@ public class ViewPresenter extends BasePresenter<View> {
                 ILogger.log(index);
                 if (index != 1) {
                     if (index != 2) {
-                        if (index != 3) {
-                            if (index == 4 && ViewPresenter.this.checkPermission()) {
-                                ViewPresenter viewPresenter = ViewPresenter.this;
-                                viewPresenter.shareImage(viewPresenter.enchantedViewPager.getCurrentItem());
-                            }
-                        } else if (!ViewPresenter.this.checkPermission()) {
+                        if (index == 3) {
+                            ViewPresenter viewPresenter = ViewPresenter.this;
+                            viewPresenter.shareImage(viewPresenter.enchantedViewPager.getCurrentItem());
                         } else {
                             if (Objects.requireNonNull(IHelpers.getExt(Value.arrayListDetail.get(ViewPresenter.this.enchantedViewPager.getCurrentItem()).wallpaper_image)).equals("gif")) {
                                 ViewPresenter viewPresenter2 = ViewPresenter.this;
@@ -336,7 +342,7 @@ public class ViewPresenter extends BasePresenter<View> {
         android.view.View view = this.activity.getLayoutInflater().inflate(R.layout.dialog_set_wallpaper, null);
         final BottomSheetDialog dialog_desc = new BottomSheetDialog(this.activity);
         dialog_desc.setContentView(view);
-       // Objects.requireNonNull(dialog_desc.getWindow()).findViewById(R.id.design_bottom_sheet).setBackgroundResource(17170445);
+        // Objects.requireNonNull(dialog_desc.getWindow()).findViewById(R.id.design_bottom_sheet).setBackgroundResource(17170445);
         dialog_desc.show();
         TextView textHomeLockScreen = dialog_desc.findViewById(R.id.textHomeLockScreen);
         TextView textHomeScreenAndLockScreen = dialog_desc.findViewById(R.id.textHomeScreenAndLockScreen);
@@ -375,10 +381,11 @@ public class ViewPresenter extends BasePresenter<View> {
 
             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                 ViewPresenter.this.progress.show();
-                String root = _context.getExternalFilesDir(null).getAbsolutePath() +
+                String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) +
                         File.separator +
                         ViewPresenter.this.activity.getString(R.string.download_folder) +
                         File.separator;
+                Log.d(TAG, "onResourceReady: " + root);
                 File rootFile = new File(root);
                 if (!rootFile.exists()) {
                     rootFile.mkdir();
@@ -446,7 +453,7 @@ public class ViewPresenter extends BasePresenter<View> {
         String str5 = "set_wallpaper";
         this.progress.show();
         try {
-            File destDir = new File(this.activity.getExternalCacheDir(), str5);
+            File destDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), str5);
             String fileName = Uri.parse(Value.arrayListDetail.get(position).wallpaper_image).getLastPathSegment();
             if (!destDir.exists()) {
                 destDir.mkdirs();
@@ -502,7 +509,7 @@ public class ViewPresenter extends BasePresenter<View> {
     public void shareImage(int position) {
         this.progress.show();
         try {
-            File destDir = new File(this.activity.getExternalCacheDir(), "shared_folder");
+            File destDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "shared_folder");
             String fileName = Uri.parse(Value.arrayListDetail.get(position).wallpaper_image).getLastPathSegment();
             if (!destDir.exists()) {
                 destDir.mkdirs();
@@ -560,10 +567,18 @@ public class ViewPresenter extends BasePresenter<View> {
     }
 
     public Boolean checkPermission() {
+
         String str = "android.permission.WRITE_EXTERNAL_STORAGE";
-        int checkSelfPermission = ContextCompat.checkSelfPermission(this.activity, str);
-        if (checkSelfPermission == 0 || VERSION.SDK_INT < 23) {
-            return true;
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            int checkSelfPermission = ContextCompat.checkSelfPermission(this.activity, Manifest.permission.READ_MEDIA_IMAGES);
+            if (checkSelfPermission == PermissionChecker.PERMISSION_GRANTED) {
+                return true;
+            }
+        } else {
+            int checkSelfPermission = ContextCompat.checkSelfPermission(this.activity, str);
+            if (checkSelfPermission == 0 || VERSION.SDK_INT < 23) {
+                return true;
+            }
         }
         this.activity.requestPermissions(new String[]{str}, InputDeviceCompat.SOURCE_GAMEPAD);
         return false;
