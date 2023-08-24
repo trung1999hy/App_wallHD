@@ -12,5 +12,5 @@ public interface MainView extends MvpView {
     void inApp();
     void onCentreButtonClick();
 
-    void onItemClick(int i, String str);
+    void onItemClick(int i);
 }

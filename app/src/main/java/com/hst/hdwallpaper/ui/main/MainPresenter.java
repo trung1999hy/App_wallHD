@@ -3,16 +3,17 @@ package com.hst.hdwallpaper.ui.main;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hst.hdwallpaper.R;
 import com.hst.hdwallpaper.data.base.BasePresenter;
-import com.luseen.spacenavigation.SpaceItem;
-import com.luseen.spacenavigation.SpaceNavigationView;
-import com.luseen.spacenavigation.SpaceOnClickListener;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 
 import java.util.Objects;
@@ -21,40 +22,23 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     public Activity activity;
     public SlidingRootNav slidingRootNav;
-    public SpaceNavigationView spaceNavigationView;
+    public BottomNavigationView bottomNavigationView;
 
 
-    public void initView(Activity activity2, SpaceNavigationView spaceNavigationView2) {
+    public void initView(Activity activity2, BottomNavigationView spaceNavigationView2) {
         this.activity = activity2;
-        this.spaceNavigationView = spaceNavigationView2;
+        this.bottomNavigationView = spaceNavigationView2;
 
         bottomNavigation();
 
     }
 
     private void bottomNavigation() {
-        this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.icon_home));
-        this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.icon_categories));
-        this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.icon_favourite));
-        this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.dollar));
-        this.spaceNavigationView.setCentreButtonIconColorFilterEnabled(false);
-        this.spaceNavigationView.showIconOnly();
-        this.spaceNavigationView.changeCurrentItem(-1);
-        this.spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
-            public void onCentreButtonClick() {
-
-            }
-
-            public void onItemClick(int itemIndex, String itemName) {
-                try {
-                    MainPresenter.this.getMvpView().onItemClick(itemIndex, itemName);
-                }catch (Throwable throwable){
-//
-                }
-            }
-
-            public void onItemReselected(int itemIndex, String itemName) {
-                MainPresenter.this.getMvpView().onItemClick(itemIndex, itemName);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                MainPresenter.this.getMvpView().onItemClick(item.getItemId());
+                return true;
             }
         });
     }

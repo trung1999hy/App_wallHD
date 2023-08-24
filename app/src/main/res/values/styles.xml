@@ -51,4 +51,7 @@
     <style name="popupDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/dialogAnimation</item>
     </style>
+    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/gnt_white</item>
+    </style>
 </resources>

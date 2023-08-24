@@ -7,17 +7,17 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hst.hdwallpaper.R;
 import com.hst.hdwallpaper.data.base.BaseActivity;
 import com.hst.hdwallpaper.ui.category.CategoryFragment;
 import com.hst.hdwallpaper.ui.favourite.FavouriteFragment;
 import com.hst.hdwallpaper.ui.purchase.PurchaseInAppActivity;
 import com.hst.hdwallpaper.ui.recent.RecentFragment;
-import com.luseen.spacenavigation.SpaceNavigationView;
 
 public class MainActivity extends BaseActivity<MainView, MainPresenter> implements MainView {
     public AppBarLayout appbar;
-    public SpaceNavigationView bottomNavigation;
+    public BottomNavigationView bottomNavigation;
     public FrameLayout fragmentContainer;
     public Toolbar toolbar;
     public TextView toolbarTitles;
@@ -62,18 +62,17 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
 
     }
 
-    public void onItemClick(int itemIndex, String itemName) {
-
-        if (itemIndex == 0) {
+    public void onItemClick(int itemIndex) {
+        if (itemIndex == R.id.home) {
             callFragment(R.id.fragment_container, new RecentFragment());
 
-        } else if (itemIndex == 1) {
+        } else if (itemIndex == R.id.categories) {
             callFragment(R.id.fragment_container, new CategoryFragment());
 
-        } else if (itemIndex == 2) {
+        } else if (itemIndex == R.id.favourite) {
 
             callFragment(R.id.fragment_container, new FavouriteFragment());
-        } else if (itemIndex == 3){
+        } else if (itemIndex == R.id.coin) {
             inApp();
         }
     }
@@ -94,7 +93,6 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     public void menuFavourite() {
         callFragment(R.id.fragment_container, new FavouriteFragment());
     }
-
 
 
     public MainPresenter initPresenter() {
