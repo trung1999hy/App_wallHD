@@ -6,7 +6,6 @@ import static com.android.billingclient.api.BillingClient.ProductType.INAPP;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,8 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,11 +30,12 @@ import com.android.billingclient.api.QueryPurchasesParams;
 import com.google.common.collect.ImmutableList;
 import com.hst.hdwallpaper.App;
 import com.hst.hdwallpaper.R;
+import com.hst.hdwallpaper.data.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PurchaseInAppActivity extends AppCompatActivity implements PurchaseInAppAdapter.OnClickListener {
+public class PurchaseInAppActivity extends BaseFragment<PurcherListView, PurchearPresenter> implements PurchaseInAppAdapter.OnClickListener {
 
     private PurchaseInAppAdapter adapter;
     private BillingClient billingClient;
@@ -50,28 +48,37 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
     private RecyclerView listData;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_purchase_in_app);
-        imvBack = findViewById(R.id.imvBack);
-        listData = findViewById(R.id.listData);
-        layout = findViewById(R.id.view);
+    public int getLayoutId() {
+        return R.layout.activity_purchase_in_app;
+    }
+
+    @Override
+    public PurchearPresenter initPresenter() {
+        return new PurchearPresenter();
+    }
+
+    @Override
+    public void onDestroyed() {
+
+    }
+
+    @Override
+    public void onStarting() {
+        listData = getRootView().findViewById(R.id.listData);
+        layout = getRootView().findViewById(R.id.view);
         initViews();
-        imvBack.setOnClickListener(v -> {
-            onBackPressed();
-        });
     }
 
 
     private void initViews() {
         adapter = new PurchaseInAppAdapter();
         listData.setHasFixedSize(true);
-        listData.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        listData.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         listData.setAdapter(adapter);
         adapter.setOnClickListener(this);
         productDetailsList = new ArrayList<>();
         handler = new Handler();
-        billingClient = BillingClient.newBuilder(this)
+        billingClient = BillingClient.newBuilder(getActivity())
                 .enablePendingPurchases()
                 .setListener(
                         (billingResult, list) -> {
@@ -113,10 +120,10 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
                     productDetailsList.clear();
                     handler.postDelayed(() -> {
                         productDetailsList.addAll(prodDetailsList);
-                        adapter.setData(this, productDetailsList);
+                        adapter.setData(getActivity(), productDetailsList);
                         if (prodDetailsList.size() == 0) {
                             layout.setVisibility(View.VISIBLE);
-                            Toast.makeText(PurchaseInAppActivity.this, "prodDetailsList, size = 0", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "prodDetailsList, size = 0", Toast.LENGTH_SHORT).show();
                         } else {
                             layout.setVisibility(View.GONE);
                         }
@@ -195,7 +202,7 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
                 setPurchaseResponse(this::setupResult);
                 onPurchaseResponse.onResponse(proId, quantity);
                 allowMultiplePurchases(purchases);
-                Toast.makeText(PurchaseInAppActivity.this, "verifyInAppPurchase Mua ok--> " + proId, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "verifyInAppPurchase Mua ok--> " + proId, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -209,7 +216,7 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
         billingClient.consumeAsync(consumeParams, new ConsumeResponseListener() {
             @Override
             public void onConsumeResponse(BillingResult billingResult, String s) {
-                Toast.makeText(PurchaseInAppActivity.this, " Resume item ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), " Resume item ", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -229,10 +236,10 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
         BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                 .setProductDetailsParamsList(productDetailsParamsList)
                 .build();
-        billingClient.launchBillingFlow(this, billingFlowParams);
+        billingClient.launchBillingFlow(getActivity(), billingFlowParams);
     }
 
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         billingClient.queryPurchasesAsync(
                 QueryPurchasesParams.newBuilder().setProductType(INAPP).build(),
@@ -254,8 +261,8 @@ public class PurchaseInAppActivity extends AppCompatActivity implements Purchase
         int remainCoin = totalCoin + getCoinFromKey(proId) * quantity;
         App.getInstance().setValueCoin(remainCoin);
         intent.putExtra(IConstaint.COIN_ORDER_RESULT, remainCoin + "");
-        setResult(Activity.RESULT_OK, intent);
-        runOnUiThread(this::onBackPressed);
+        getActivity().setResult(Activity.RESULT_OK, intent);
+        getActivity().runOnUiThread(getActivity()::onBackPressed);
     }
 
     private int getCoinFromKey(String coin) {

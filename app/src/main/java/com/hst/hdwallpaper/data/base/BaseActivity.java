@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.hst.hdwallpaper.ui.purchase.PurchaseInAppActivity;
+
 public abstract class BaseActivity<V extends MvpView, P extends BasePresenter<V>> extends AppCompatActivity implements MvpView {
     protected BaseFragment mBaseCurrentFragment;
     protected P presenter;

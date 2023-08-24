@@ -9,6 +9,7 @@ public interface MainView extends MvpView {
 
     void menuHome();
 
+    void inApp();
     void onCentreButtonClick();
 
     void onItemClick(int i, String str);

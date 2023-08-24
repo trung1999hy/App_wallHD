@@ -39,34 +39,6 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_20" />
-
-                <LinearLayout
-                    android:id="@+id/pointView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/bg_radius_18p_white"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="8dp">
-
-                    <TextView
-                        android:id="@+id/pointWallet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:paddingRight="8dp"
-                        android:text="20"
-                        android:textColor="@color/space_white"
-                        android:textSize="11dp" />
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/wallet" />
-                </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -85,8 +57,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:active_item_color="@android:color/white"
-        app:centre_button_color="@android:color/white"
-        app:centre_button_icon="@drawable/icon_home"
+        app:centre_button_icon="@null"
         app:inactive_item_color="@color/colorTextSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

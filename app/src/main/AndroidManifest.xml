@@ -40,7 +40,6 @@
         <activity android:name="com.hst.hdwallpaper.ui.view.ViewActivity" />
         <activity android:name="com.hst.hdwallpaper.ui.category_list.CategoryListActivity" />
         <activity android:name="com.hst.hdwallpaper.ui.main.MainActivity" />
-        <activity android:name="com.hst.hdwallpaper.ui.purchase.PurchaseInAppActivity" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="fullSensor"

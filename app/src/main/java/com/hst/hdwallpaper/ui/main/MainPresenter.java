@@ -33,14 +33,16 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     private void bottomNavigation() {
+        this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.icon_home));
         this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.icon_categories));
         this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.icon_favourite));
+        this.spaceNavigationView.addSpaceItem(new SpaceItem(null, R.drawable.dollar));
         this.spaceNavigationView.setCentreButtonIconColorFilterEnabled(false);
         this.spaceNavigationView.showIconOnly();
         this.spaceNavigationView.changeCurrentItem(-1);
         this.spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             public void onCentreButtonClick() {
-                MainPresenter.this.getMvpView().onCentreButtonClick();
+
             }
 
             public void onItemClick(int itemIndex, String itemName) {
