@@ -39,6 +39,33 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/text_20" />
+
+                <LinearLayout
+                    android:id="@+id/pointView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bg_radius_18p_white"
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+                <TextView
+                    android:id="@+id/pointWallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="11dp"
+                    android:textColor="@color/gnt_white"
+                    android:paddingRight="8dp"
+                    android:text="20"/>
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/wallet"
+                    />
+                </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
